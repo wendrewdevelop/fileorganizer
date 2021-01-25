@@ -8,6 +8,7 @@ authors = ["wendrew"]
 python = "^3.9"
 Flask = "^1.1.2"
 schedule = "^0.6.0"
+ipython = "^7.19.0"
 
 [tool.poetry.dev-dependencies]
 

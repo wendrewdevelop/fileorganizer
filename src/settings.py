@@ -21,3 +21,7 @@ files_inside_directory = [f for f in listdir(unprocessed_files) if isfile(join(u
 # Configuração do log de arquivo
 logging.config.fileConfig('log_settings.ini')
 logger = logging.getLogger()
+
+# Tamanho maximo de arquivos
+# txt, csv, pdf e afins
+max_size_files = 524288000 # 500 mb

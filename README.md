@@ -40,3 +40,5 @@ Windows PowerShell:
 - [ ] Verificar o tamanho do arquivo antes de fazer o processamento e, se o tamanho do mesmo for maior que o permitido, retornar um log e excluir o arquivo; 
 
 - [ ] Realizar uma limpeza de memoria para que diminua os "ruidos" causados por arquivos muito grandes ou tempo de execução grande;
+
+- [x] Criar uma fila para que apenas um arquivo seja enviado para a pasta *unprocessed_files* de cada vez;
