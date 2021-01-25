@@ -37,7 +37,7 @@ Windows PowerShell:
 
 - [x] Criar tag para sempre que houver arquivos não processados o sistema realizar os procedimentos;
 
-- [ ] Verificar o tamanho do arquivo antes de fazer o processamento e, se o tamanho do mesmo for maior que o permitido, retornar um log e excluir o arquivo; 
+- [x] Verificar o tamanho do arquivo antes de fazer o processamento e, se o tamanho do mesmo for maior que o permitido, retornar um log e excluir o arquivo; 
 
 - [ ] Realizar uma limpeza de memoria para que diminua os "ruidos" causados por arquivos muito grandes ou tempo de execução grande;
 
