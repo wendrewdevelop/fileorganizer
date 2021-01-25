@@ -13,7 +13,7 @@ import asyncio
 from settings import *
 
 
-def get_file_extension(file: object) -> str:
+def get_file_extension():
     """
         Função que obtém a extensão do 
         arquivo submetido.
@@ -34,7 +34,7 @@ def get_file_extension(file: object) -> str:
         logger.warning(error)
 
 
-def get_filenames(file: object) -> str:
+def get_filenames():
     """
         Função que obtém o nome do 
         arquivo submetido.
@@ -78,7 +78,7 @@ def move_files_to_processed_folder(file: object):
         except Exception as error:
             logger.error(error)
 
-#TODO: Terminar a função que verifica o tamanho do arquivo
+
 def file_size_verifier():
     """
         Função que verifica os tamanho dos
@@ -86,7 +86,6 @@ def file_size_verifier():
         permitidos.
     """
 
-    total_size = 0
     root_directory = Path(str(default_directory) + '/app/unprocessed_files/')
     try:
         if len(os.listdir(str(unprocessed_files))) == 0:
@@ -98,29 +97,36 @@ def file_size_verifier():
                 if s > max_size_files:
                     logger.info('Arquivo maior que 500mb. O mesmo não será processado')
                 else:
-                    move_files_to_processed_folder(s)
+                    logger.info(f'Tamanho do arquivo ({s} bytes) aceitavel, o mesmo sera processado.')
     except Exception as error:
         logger.error(error)
+
+
+def rename_file_and_validate(start_path = str(default_directory) + '/app/unprocessed_files/'):
+    """
+        Renomeando os arquivos validados antes de
+        transferi-los para a pasta PROCESSED_FILES
+    """
+    
+    for dirpath, dirnames, filenames in os.walk(start_path):
+        for f in filenames:
+            new_name_file = f'processed-{f}'
+            try:
+                old_file, new_file = os.rename(f'{start_path}{f}', f'{processed_files}/{new_name_file}')
+                logger.info('Arquivo renomeado!')
+                print(new_file)
+            except Exception as error:
+                logger.error(error)
 
 
 def main():
     """
         Função de agrupamento
     """
-    file_size_verifier()    
+
+    rename_file_and_validate()
         
-    
-#if __name__ == "__main__":
-#    logger.info('Script started.')
-#    schedule.every(10).seconds.do(main)
-#    while True:
-#        schedule.run_pending()
-#        time.sleep(1)
 
 if __name__ == "__main__":
-    logger.info('Script started.')
-    loop = asyncio.get_event_loop()
-    loop.call_soon(main)
-    loop.run_forever()
-    #main()
+    main()
 

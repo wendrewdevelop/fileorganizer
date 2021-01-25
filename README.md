@@ -42,3 +42,5 @@ Windows PowerShell:
 - [ ] Realizar uma limpeza de memoria para que diminua os "ruidos" causados por arquivos muito grandes ou tempo de execução grande;
 
 - [x] Criar uma fila para que apenas um arquivo seja enviado para a pasta *unprocessed_files* de cada vez;
+
+- [x] Validar o arquivo e renomea-lo antes de enviar para a pasta de *processed_files*;
